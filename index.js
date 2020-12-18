@@ -10,19 +10,19 @@ function getControlePanel(index) {
     return `<div class="controle-panel mr-6">
                 <div class="input-field">
                     <label for="top-${index}">Top: </label>
-                    <input class="input mr-6" id="top-${index}" type="number">
+                    <input oninput="setTop(${index})" class="input mr-6" id="top-${index}" type="number">
                 </div>
                 <div class="input-field">
                     <label for="bottom-${index}">Bottom: </label>
-                    <input class="input mr-6" id="bottom-${index}" type="number">
+                    <input oninput="setBottom(${index})" class="input mr-6" id="bottom-${index}" type="number">
                 </div>
                 <div class="input-field">
                     <label for="left-${index}">Left: </label>
-                    <input class="input mr-6" id="left-${index}" type="number">
+                    <input oninput="setLeft(${index})" class="input mr-6" id="left-${index}" type="number">
                 </div>
                 <div class="input-field">
                     <label for="right-${index}">Right: </label>
-                    <input class="input mr-6" id="right-${index}" type="number">
+                    <input oninput="setRight(${index})" class="input mr-6" id="right-${index}" type="number">
                 </div>
             </div>`;
 }
@@ -35,5 +35,20 @@ console.log(panelInputs);
 for (let index = 0; index < allContainers.length; index++) {
     let controlePanel = getControlePanel(index);
     allContainers[index].insertAdjacentHTML("beforeend", controlePanel);
-    allContainers[index].style.top = document.getElementById('top-'+index).value + 'px';
+}
+
+function setTop(index){
+	allContainers[ index ].style.top = document.getElementById('top-'+index).value+'px';
+}
+
+function setBottom(index){
+	allContainers[ index ].style.bottom = document.getElementById('bottom-'+index).value+'px';
+}
+
+function setLeft(index){
+	allContainers[ index ].style.left = document.getElementById('left-'+index).value+'px';
+}
+
+function setRight(index){
+	allContainers[ index ].style.right = document.getElementById('right-'+index).value+'px';
 }
